@@ -87,7 +87,7 @@ public class CurrencyConverter {
         try {
             HttpResponse response = http.send(request);
             if (response.getStatusCode() == 200) {
-                // Maneja la respuesta JSON
+                // Se Maneja la respuesta JSON
                 Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
                 Map<String, Object> data = (Map<String, Object>) result.get('data');
                 
@@ -107,8 +107,8 @@ public class CurrencyConverter {
                     ratesToUpsert.add(rate);
                 }
 
-                // Realizar upsert en lugar de insert
-                // Se asume que 'Currency_Code__c' es un campo External ID o un campo único
+                // Realizar upsert
+                //'Currency_Code__c' es un campo único
                 upsert ratesToUpsert Currency_Code__c;
 
             } else {
